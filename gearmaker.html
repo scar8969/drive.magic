@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harmonic Maker | drive.magic</title>
+  <meta name="description" content="Interactive harmonic drive tooth profile generator. Cup and pancake configurations, exported as 2D DXF profiles ready to extrude.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="180x180" href="/icon-180.png">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="drive.magic">
+  <meta property="og:title" content="Harmonic Maker: free harmonic drive generator">
+  <meta property="og:description" content="Interactive harmonic drive tooth profile generator. Cup and pancake configurations, exported as 2D DXF profiles ready to extrude.">
+  <meta property="og:url" content="https://scar8969.github.io/drive.magic/gearmaker.html">
+  <meta property="og:image" content="https://scar8969.github.io/drive.magic/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <a class="wordmark" href="index.html">&lt;drive<span class="bro">.</span>magic/&gt;</a>
+    <nav>
+      <a href="actuators.html">&lt;actuators/&gt;</a>
+      <a href="gearmaker.html" class="active">&lt;harmonic-maker/&gt;</a>
+      <a href="learn.html">&lt;learn/&gt;</a>
+      <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">&lt;github/&gt;</a>
+    </nav>
+  </header>
+
+  <main class="gearmaker">
+    <aside class="panel">
+      <h2>&lt;harmonic-maker/&gt;</h2>
+
+      <div class="seg" id="styleSeg">
+        <button data-style="cup" class="active">cup</button>
+        <button data-style="pancake">pancake</button>
+      </div>
+
+      <h3>preset</h3>
+      <div class="seg" id="presetSeg">
+        <button data-preset="hdp30" title="Our HDP30: 30:1, module 0.55, cycloid, pancake. The exact profile that cut the DXFs on the actuators page.">load hdp30</button>
+      </div>
+
+      <h3>tooth form</h3>
+      <div class="seg" id="profileSeg">
+        <button data-profile="cycloid" class="active">cycloid</button>
+        <button data-profile="s">S-tooth</button>
+      </div>
+      <p class="cite" id="citation">
+        Cycloid tooth profile after Yao&nbsp;et&nbsp;al.,
+        &ldquo;A Novel Cycloid Tooth Profile for Harmonic Drive with Fully
+        Conjugate Features,&rdquo;
+        <em>Actuators</em> 2025, 14, 187.
+        <a href="https://doi.org/10.3390/act14040187" target="_blank" rel="noopener">doi:10.3390/act14040187</a>
+      </p>
+
+      <h3>gear</h3>
+      <div class="field">
+        <label for="module">module <span class="sym">m, mm</span></label>
+        <input type="number" id="module" step="0.05" min="0.1" value="1.25">
+      </div>
+      <div class="field">
+        <label for="zf">flexspline teeth <span class="sym">Zf</span></label>
+        <input type="number" id="zf" step="2" min="20" value="100">
+      </div>
+      <div class="field">
+        <label for="zc">circular spline teeth <span class="sym">Zc</span></label>
+        <input type="number" id="zc" step="2" min="22" value="102">
+      </div>
+      <div class="field no-reset">
+        <label for="ratio">reduction <span class="sym">: 1</span></label>
+        <input type="number" id="ratio" step="1" min="5" value="50">
+      </div>
+      <p class="cite" id="ratioNote">
+        Zf / (Zc &minus; Zf). Type one and Zf follows, so any whole ratio is
+        exact.
+      </p>
+
+      <div id="advanced" hidden>
+        <h3>profile tuning</h3>
+        <div class="field">
+          <label for="w0Ratio">deflection ratio <span class="sym">w&#8320;/m</span></label>
+          <input type="number" id="w0Ratio" step="0.05" min="0.5" max="1.5" value="1.0">
+        </div>
+        <div class="toggle-row">
+          <input type="checkbox" id="autoHeightToggle">
+          <label for="autoHeightToggle">fit tooth height to deflection <span class="sym">(drives HA = HD)</span></label>
+        </div>
+        <div class="field">
+          <label for="ha">addendum <span class="sym">HA, &times;m</span></label>
+          <input type="number" id="ha" step="0.05" min="0.2" value="1.0">
+        </div>
+        <div class="field">
+          <label for="hd">dedendum <span class="sym">HD, &times;m</span></label>
+          <input type="number" id="hd" step="0.05" min="0.2" value="1.0">
+        </div>
+        <div class="field">
+          <label for="toothThickness">tooth thickness <span class="sym">&times;pitch, &le; 0.50</span></label>
+          <input type="number" id="toothThickness" step="0.01" min="0.1" max="0.5" value="0.50">
+        </div>
+        <div class="field" id="toothAngleRow">
+          <label for="toothAngle">tooth angle <span class="sym">&alpha;&#8320;, cycloid, &deg;</span></label>
+          <input type="number" id="toothAngle" step="0.5" min="0" value="9.17">
+        </div>
+        <div class="field" id="tipHalfWidthRow">
+          <label for="tipHalfWidth">tip radius <span class="sym">S-tooth, &times;m</span></label>
+          <input type="number" id="tipHalfWidth" step="0.05" min="0.05" value="0.30">
+        </div>
+        <div class="field" id="rootFilletRow">
+          <label for="rootFillet">root fillet <span class="sym" id="rootFilletSym">&times;m</span></label>
+          <input type="number" id="rootFillet" step="0.01" min="0" value="0.15">
+        </div>
+        <div class="field">
+          <label for="clearance">clearance <span class="sym" id="clearanceSym">&times;m</span></label>
+          <input type="number" id="clearance" step="0.01" value="0.05">
+        </div>
+        <div class="field" id="clearanceOutputRow" hidden>
+          <label for="clearanceOutput">output clearance <span class="sym">CS, &times;m</span></label>
+          <input type="number" id="clearanceOutput" step="0.005" value="0.01">
+        </div>
+        <div class="field" id="pressureAngleRow">
+          <label for="pressureAngle">pressure angle <span class="sym">S-tooth, &deg;</span></label>
+          <input type="number" id="pressureAngle" step="1" min="5" max="45" value="30">
+        </div>
+      </div>
+
+      <h3>wall thickness</h3>
+      <div class="field">
+        <label for="wallFlex">flexspline <span class="sym">mm</span></label>
+        <input type="number" id="wallFlex" step="0.05" min="0.4" value="0.75">
+      </div>
+      <div class="field" id="wallCircRow">
+        <label for="wallCirc"><span id="wallCircLabel">circular spline</span> <span class="sym">mm</span></label>
+        <input type="number" id="wallCirc" step="0.1" min="0.4" value="3.0">
+      </div>
+      <div class="field" id="wallDynRow" hidden>
+        <label for="wallDyn">output CS <span class="sym">mm</span></label>
+        <input type="number" id="wallDyn" step="0.1" min="0.4" value="3.0">
+      </div>
+
+      <div class="toggle-row">
+        <input type="checkbox" id="waveGenToggle">
+        <label for="waveGenToggle">include wave generator <span class="sym">solid cam</span></label>
+      </div>
+
+      <div class="toggle-row">
+        <input type="checkbox" id="advToggle">
+        <label for="advToggle">advanced mode: all parameters</label>
+      </div>
+
+      <h3>export detail</h3>
+      <div class="seg" id="detailSeg">
+        <button data-tol="0">full</button>
+        <button data-tol="0.01" class="active">fine</button>
+        <button data-tol="0.03">medium</button>
+        <button data-tol="0.08">coarse</button>
+      </div>
+      <p class="detail-readout" id="detailReadout"></p>
+
+      <button class="export-btn" id="exportBtn">export dxf files</button>
+      <button class="link-btn" id="linkBtn">copy share link</button>
+      <div class="warn" id="warn"></div>
+    </aside>
+
+    <section class="viewport">
+      <canvas id="preview"></canvas>
+      <div class="readout" id="readout"></div>
+      <div class="metrics" id="metrics"></div>
+      <div class="vp-tools">
+        <input id="speedRange" class="tool-range" type="range" min="0" max="3" step="0.1" value="1" hidden aria-label="mesh speed">
+        <button id="playBtn" class="tool-btn" type="button">&#9654; mesh</button>
+        <button id="measureBtn" class="tool-btn" type="button">measure</button>
+      </div>
+      <div class="hint" id="hint">scroll to zoom &middot; drag to pan &middot; profiles are 2D, so extrude to your wall depth in CAD</div>
+    </section>
+  </main>
+
+  <footer class="site">
+    &copy; 2026 drive.magic, open hardware for everyone
+  </footer>
+
+  <script src="js/ctp-revB.js"></script>
+  <script src="js/dxf.js"></script>
+  <script src="js/gearmaker.js?v=2"></script>
+</body>
+</html>

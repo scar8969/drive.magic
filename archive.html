@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive | drive.magic</title>
+  <meta name="description" content="Archived harmonic drive revisions from drive.magic. Nothing deleted, nothing broken — CAD, BOMs and test data stay up.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="180x180" href="/icon-180.png">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <a class="wordmark" href="index.html">&lt;drive<span class="bro">.</span>magic/&gt;</a>
+    <nav>
+      <a href="actuators.html" class="active">&lt;actuators/&gt;</a>
+      <a href="gearmaker.html">&lt;harmonic-maker/&gt;</a>
+      <a href="learn.html">&lt;learn/&gt;</a>
+      <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">&lt;github/&gt;</a>
+    </nav>
+  </header>
+
+  <main class="gallery-page">
+    <section class="gallery-intro">
+      <p class="eyebrow"><a href="actuators.html">&lt;actuators/&gt;</a> / &lt;archive/&gt;</p>
+      <h1>&lt;archive/&gt;</h1>
+      <p>
+        Revisions we've moved on from. Nothing here is deleted and nothing here
+        is broken: the CAD is still downloadable, the bills of materials still
+        load, the repos are still public, and the test data is still the test
+        data. If you printed one of these, it keeps working and so does its
+        page.
+      </p>
+      <p>
+        We archive a revision when a newer one replaces it, not when it stops
+        being good. Sometimes the older drive is still the better choice, so read
+        the note on each one.
+      </p>
+    </section>
+
+    <section class="act-list">
+      <a class="act-card" href="hd20.html">
+        <div class="act-card-media">
+          <img src="img/hd20/hd20-exploded-800.jpg"
+               width="600" height="800" loading="lazy"
+               alt="The HD20 actuator opened up, showing the ball-cage wave generator inside the printed body.">
+        </div>
+        <div class="act-card-body">
+          <h2>HD20</h2>
+          <p class="act-card-sub">20:1 harmonic drive · NEMA 17 · v1.0 (RevA), August 2026</p>
+          <p>
+            Superseded by the <b>HDP30</b>, which gets 30:1 from the same motor
+            face and the same hardware. Still the only drive we have put on a
+            load cell, so it's still the one to build if you need a torque
+            figure you can defend.
+          </p>
+          <ul class="act-card-stats">
+            <li><b>20:1</b> reduction</li>
+            <li><b>3.3 N·m</b> tested</li>
+            <li><b>~$3.96</b> hardware</li>
+          </ul>
+          <span class="act-card-go">view the archived build &rarr;</span>
+        </div>
+      </a>
+
+      <div class="act-card placeholder">
+        <div class="act-card-body">
+          <h2>&lt;still-current/&gt;</h2>
+          <p class="act-card-sub">looking for the drive we'd build today?</p>
+          <p>
+            The <a href="hdp30.html">HDP30</a> is the current revision:
+            30:1, same NEMA 17 face, same bill of materials, thinner stack.
+            Everything we're actively developing lives on the
+            <a href="actuators.html">actuators page</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-intro">
+      <h2>&lt;why-keep-them/&gt;</h2>
+      <p>
+        Because open hardware that vanishes when the author moves on isn't
+        really open. Someone out there has an HD20 half-printed, and a dead
+        link is a worse outcome than an out-of-date page. Every archived
+        revision keeps its files, its
+        <a href="hd20-torque-test.html">measurements</a> and its honest
+        caveats.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site">
+    &copy; 2026 drive.magic, open hardware for everyone
+  </footer>
+</body>
+</html>

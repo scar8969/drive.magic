@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HDP30: 3D-printable 30:1 pancake harmonic drive actuator | drive.magic</title>
+  <meta name="description" content="A 3D-printable 30:1 pancake strain wave (harmonic) actuator for any NEMA 17 stepper. About $4 of hardware per unit. Free STEP files, DXF tooth profiles and a full BOM. Not yet load-cell tested.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="180x180" href="/icon-180.png">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <link rel="canonical" href="https://scar8969.github.io/drive.magic/hdp30.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="drive.magic">
+  <meta property="og:title" content="HDP30: a printable 30:1 pancake harmonic drive">
+  <meta property="og:description" content="Bolts to any NEMA 17. 30:1 in a thinner package, about $4 of hardware. STEP, DXF and BOM, free under CC BY-SA. Torque testing still pending.">
+  <meta property="og:url" content="https://scar8969.github.io/drive.magic/hdp30.html">
+  <meta property="og:image" content="https://scar8969.github.io/drive.magic/img/hdp30/hdp30-assembled.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <a class="wordmark" href="index.html">&lt;drive<span class="bro">.</span>magic/&gt;</a>
+    <nav>
+      <a href="actuators.html" class="active">&lt;actuators/&gt;</a>
+      <a href="gearmaker.html">&lt;harmonic-maker/&gt;</a>
+      <a href="learn.html">&lt;learn/&gt;</a>
+      <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">&lt;github/&gt;</a>
+    </nav>
+  </header>
+
+  <main class="actuator">
+
+    <section class="act-hero">
+      <div class="act-hero-copy">
+        <p class="eyebrow">&lt;actuator/&gt; · v1.0 (RevB)</p>
+        <h1>HDP30</h1>
+        <p class="lead">
+          A 3D-printable <strong>30:1</strong> harmonic drive that bolts onto
+          any standard NEMA&nbsp;17 stepper. Half again the reduction of our
+          <a href="hd20.html">HD20</a>, in a thinner stack, off the same
+          <strong>$4 of hardware</strong>.
+        </p>
+        <div class="act-cta-row">
+          <a class="cta" href="https://github.com/scar8969/drive.magic/releases" target="_blank" rel="noopener">download the files &rarr;</a>
+          <a class="cta ghost" href="https://cad.onshape.com/documents/319971bd8bd86171560c48e0/w/245bded9ea0f5ce28da60641/e/576f328b49bb8904f021e3ae?renderMode=0&amp;uiState=6a9f1c9ef8a8e037959edf03" target="_blank" rel="noopener">remix in onshape</a>
+        </div>
+        <p class="act-license-line">
+          Free and open under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.
+          Build it, change it, sell it. Just credit us and share alike.
+        </p>
+      </div>
+      <figure class="act-hero-shot">
+        <img src="img/hdp30/hdp30-assembled.jpg"
+             srcset="img/hdp30/hdp30-assembled-800.jpg 600w, img/hdp30/hdp30-assembled.jpg 1200w"
+             sizes="(max-width: 900px) 100vw, 460px"
+             width="1200" height="1763"
+             alt="The assembled HDP30 held in gloved hands: a thin white printed gearbox with a knurled output ring, bolted to the face of a black NEMA 17 stepper.">
+      </figure>
+    </section>
+
+    <section class="act-stats">
+      <div class="stat"><span class="stat-v">30:1</span><span class="stat-k">reduction</span></div>
+      <div class="stat pending"><span class="stat-v">not yet</span><span class="stat-k">measured torque</span></div>
+      <div class="stat"><span class="stat-v">~$3.96</span><span class="stat-k">hardware per unit</span></div>
+      <div class="stat"><span class="stat-v">10</span><span class="stat-k">printed parts</span></div>
+    </section>
+
+    <div class="act-body">
+
+      <div class="note danger">
+        <strong>This revision has not been tested on a load cell yet.</strong>
+        There is no torque number, no efficiency number and no backlash number
+        for the HDP30. We would rather ship the files with that gap stated
+        plainly than quote you the HD20's figures and let you assume they carry
+        over. They don't, because the tooth module dropped from 0.8 to 0.55,
+        so the teeth are smaller and the engagement is different. Testing is
+        queued, and this page gets the numbers when the numbers exist.
+        <br><br>
+        <strong>If you need a drive with data behind it today</strong>, build
+        the <a href="hd20.html">HD20</a> instead. It's archived, but it's
+        measured.
+      </div>
+
+      <h2 id="how">&lt;how-it-works/&gt;</h2>
+      <p>
+        Three parts do the work. A <strong>wave generator</strong>, an ellipse
+        riding on eleven loose 5&nbsp;mm balls in a printed cage, pushes a
+        flexible toothed ring (the <strong>flexspline</strong>) into an oval, so
+        its teeth engage a rigid <strong>circular spline</strong> at only two
+        points. The circular spline has two more teeth than the flexspline, so a
+        full turn of the motor walks the output around by just two teeth. With a
+        60-tooth flexspline, that tiny slip per revolution is the 30:1.
+      </p>
+      <p>
+        New to strain wave gearing? We wrote
+        <a href="learn.html">a plain-language explainer</a>. And every tooth profile
+        in this drive came out of our own free
+        <a href="gearmaker.html">harmonic maker</a>, including
+        <a href="#remix">the exact settings used here</a>, which you can open
+        and edit.
+      </p>
+
+      <h2 id="changed">&lt;what-changed/&gt;</h2>
+      <p>
+        The <a href="hd20.html">HD20</a> got 20:1 out of a 40-tooth
+        flexspline at module 0.8. The HDP30 keeps the same two-tooth difference
+        but packs in <strong>60 teeth at module 0.55</strong>, which buys half
+        again the reduction at roughly the same pitch diameter, and lets the
+        whole stack get thinner. Hence <em>pancake</em>.
+      </p>
+      <p>
+        Six parts were re-cut for the new profile: the flexspline, both circular
+        splines, the wave generator, the ball cage and the output preloader. The
+        <strong>interface plate, the base preloader and the shear pins are
+        unchanged</strong>, and so is every piece of hardware: same eleven
+        balls, same 30&nbsp;×&nbsp;42&nbsp;×&nbsp;7 bearing, same eight screws,
+        same twelve inserts. If you've already built an HD20, your leftovers
+        cover this one.
+      </p>
+      <p>
+        What you give up is the test data. The HD20 is the measured design; the
+        HDP30 is the newer one. That's the whole trade.
+      </p>
+
+      <h2 id="specs">&lt;specs/&gt;</h2>
+      <table class="spec-table">
+        <tbody>
+          <tr><th>Reduction</th><td>30:1</td></tr>
+          <tr><th>Tooth profile</th><td>Cycloidal, module 0.55, 60-tooth flexspline against a 62-tooth circular spline</td></tr>
+          <tr><th>Measured torque</th><td class="pending-cell">not yet measured</td></tr>
+          <tr><th>Efficiency</th><td class="pending-cell">not yet measured</td></tr>
+          <tr><th>Backlash</th><td class="pending-cell">not yet measured</td></tr>
+          <tr><th>Motor</th><td>Any NEMA 17 with a 5 mm shaft. The interface plate is unchanged from the HD20, which was validated with an
+            <a href="https://www.omc-stepperonline.com/e-series-nema-17-bipolar-26ncm-36-82oz-in-1-2a-42x42x30mm-4-wires-w-1m-cable-connector-17he12-1204s" target="_blank" rel="noopener">OMC StepperOnline 17HE12-1204S</a>:
+            42 × 42 × 30 mm, 26 N·cm, 1.2 A, 4-wire.</td></tr>
+          <tr><th>Lubrication</th><td>Super Lube synthetic PTFE grease</td></tr>
+          <tr><th>Printed parts</th><td>10 pieces across 9 unique parts, including 2 shear pins</td></tr>
+          <tr><th>Fasteners</th><td>8 × M3×0.5 × 6 mm button head screws per drive</td></tr>
+          <tr><th>Materials</th><td>PLA throughout, PETG for the flexspline</td></tr>
+          <tr><th>Version</th><td>v1.0 (RevB), 30 August 2026</td></tr>
+          <tr><th>License</th><td><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="need">&lt;what-you-need/&gt;</h2>
+      <p>Beyond the bill of materials below, you supply:</p>
+      <ul>
+        <li>A <strong>NEMA 17 stepper with a 5 mm shaft</strong>. The mounting
+          face is identical to the HD20's, which we ran with an
+          <a href="https://www.omc-stepperonline.com/e-series-nema-17-bipolar-26ncm-36-82oz-in-1-2a-42x42x30mm-4-wires-w-1m-cable-connector-17he12-1204s" target="_blank" rel="noopener">OMC StepperOnline 17HE12-1204S</a>
+          (26 N·cm, 1.2 A) under closed-loop FOC control.</li>
+        <li><strong>4 × M3 screws</strong> to bolt the motor to the interface
+          plate. These are separate from the 8 × M3×0.5 × 6 mm screws that hold
+          the drive itself together, which are in the bill of materials.</li>
+        <li>A <strong>soldering iron</strong> for the heat-set inserts, and hex keys.</li>
+        <li><strong>PLA</strong> for everything, and <strong>PETG</strong> for the flexspline.</li>
+        <li><strong>Super Lube</strong> on the wave generator and the tooth mesh.
+          It's in the bill of materials below. Don't run it dry.</li>
+      </ul>
+
+      <div class="note danger">
+        <strong>Do not print the flexspline in PLA.</strong> It flexes on every
+        single revolution of the motor. PLA has almost no fatigue life under
+        that duty and will crack, usually within minutes of running. This
+        matters more here than on the HD20, not less. Module 0.55 teeth are
+        smaller, and the wall they sit on is thin.
+      </div>
+
+      <h2 id="bom">&lt;bill-of-materials/&gt;</h2>
+      <p>
+        Unchanged from the HD20. We checked that part by part against the CAD
+        rather than assuming it: the cage has the same eleven ball pockets, and
+        every screw bore and insert boss lines up one for one.
+      </p>
+      <p id="bomStatus" class="bom-status">loading the bill of materials…</p>
+      <div id="bomMount" data-fallback="data/hdp30-bom.json"></div>
+
+      <h2 id="parts">&lt;printed-parts/&gt;</h2>
+      <table class="spec-table parts-table">
+        <thead><tr><th>Part</th><th>Qty</th><th>Material</th></tr></thead>
+        <tbody>
+          <tr><td>Circular spline (base)</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Circular spline (output)</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Base preloader</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Output preloader</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Interface / motor mount</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Wave generator</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Ball cage</td><td>1</td><td>PLA</td></tr>
+          <tr><td>Flexspline</td><td>1</td><td class="hl">PETG</td></tr>
+          <tr><td>Shear pin</td><td>2</td><td>PLA</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Both shear pins are required, and they're the same part printed twice,
+        so there's only one file to download. They carry shear load across the
+        output joint directly, so the connection doesn't have to rely on
+        friction from the preloaded screws to resist it. The screws clamp; the
+        pins take the sideways load.
+      </p>
+
+      <h3 id="printing">Print settings</h3>
+      <p>
+        No custom temperatures and no special bed prep. The HD20 was printed on
+        a <strong>Bambu Lab P1S</strong> with <strong>Bambu PLA</strong> (and
+        PETG for the flexspline), and the HDP30 uses the same settings: the
+        <strong>Arachne</strong> variable-width wall generator and
+        <strong>one extra wall loop</strong> for strength.
+      </p>
+      <p>
+        Two things are not the default. The <strong>output circular spline</strong>
+        and the <strong>interface</strong> both need <strong>supports</strong>;
+        everything else prints unsupported. And we set <strong>seam position to
+        random</strong> on all parts, so a single seam line doesn't stack up into
+        a weak spot or a visible ridge on the round surfaces.
+      </p>
+
+      <h2 id="files">&lt;the-files/&gt;</h2>
+      <p>
+        Everything lives in
+        <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">scar8969/drive.magic</a>.
+        Grab the packaged bundles from the releases page. The STEP files are
+        large, so you probably don't want to clone the whole repo.
+      </p>
+      <p>
+        Slice the STEP with the <a href="#printing">print settings above</a>, so
+        the geometry you print is always the current one.
+      </p>
+      <div class="dl-grid">
+        <a class="dl" href="https://github.com/scar8969/drive.magic/releases/latest" target="_blank" rel="noopener">
+          <span class="dl-k">STEP</span>
+          <span class="dl-d">Solid geometry, all nine parts. Slice it to print, or open it in CAD to remix.</span>
+        </a>
+        <a class="dl" href="https://github.com/scar8969/drive.magic/tree/main/cad/dxf" target="_blank" rel="noopener">
+          <span class="dl-k">DXF</span>
+          <span class="dl-d">The four tooth profiles, straight out of the harmonic maker.</span>
+        </a>
+        <a class="dl" href="https://cad.onshape.com/documents/319971bd8bd86171560c48e0/w/245bded9ea0f5ce28da60641/e/576f328b49bb8904f021e3ae?renderMode=0&amp;uiState=6a9f1c9ef8a8e037959edf03" target="_blank" rel="noopener">
+          <span class="dl-k">Onshape</span>
+          <span class="dl-d">The live parametric model. Copy it and make it yours.</span>
+        </a>
+      </div>
+
+      <h2 id="assembly">&lt;assembly/&gt;</h2>
+      <figure class="act-loop">
+        <video src="img/hdp30/hdp30-spin.mp4"
+               poster="img/hdp30/hdp30-assembled-800.jpg"
+               width="1080" height="1920"
+               autoplay muted loop playsinline preload="none"
+               aria-label="A short looping clip of the assembled HDP30 being turned by hand."></video>
+        <figcaption>Half a second of the assembled drive, on loop. Output turns; motor barely does.</figcaption>
+      </figure>
+      <div class="video-slot">
+        <p class="video-soon">📹 the proper build video is in the works</p>
+        <p>
+          A full, properly paced walkthrough is being filmed now and will be
+          posted to
+          <a href="https://www.youtube.com/@robrotics" target="_blank" rel="noopener">youtube.com/@robrotics</a>
+          and embedded right here. Written step-by-step instructions are being
+          put together alongside it.
+        </p>
+      </div>
+
+      <h2 id="known">&lt;known-behaviour/&gt;</h2>
+      <p>
+        The HDP30 hasn't been characterised yet, so this section is explicit
+        about where each item comes from. Read it before you conclude you
+        assembled it wrong.
+      </p>
+      <h3>Applies to this drive</h3>
+      <ul>
+        <li><strong>PLA creeps under sustained load.</strong> Holding a heavy
+          static load for hours will slowly deform the circular splines.</li>
+        <li><strong>Unit-to-unit variation is real.</strong> Two HD20s of the
+          same design differed by up to 18% at the same current. Printed
+          gearboxes are not precision parts, and smaller teeth won't make that
+          better.</li>
+        <li><strong>Output spline preload is the biggest tuning knob.</strong>
+          On the HD20, tightening it further took one unit from 2.37 to
+          2.55 N·m. Expect it to matter here too.</li>
+        <li><strong>Torque drops after running in.</strong> One HD20 measured
+          2.32 N·m fresh and 2.08 N·m after further running. Plan around the
+          run-in figure, not the fresh one.</li>
+      </ul>
+      <h3>Not yet known for this drive</h3>
+      <p>
+        Torque, efficiency, backlash, thermal behaviour, and whether the module
+        0.55 teeth hold up as well as the 0.8 teeth under load. That last one is
+        the open question this revision exists to answer.
+      </p>
+      <p>
+        Hit something we haven't listed? Please
+        <a href="https://github.com/scar8969/drive.magic/issues" target="_blank" rel="noopener">open an issue</a>
+        and tell us your version, filament and printer.
+      </p>
+
+      <h2 id="testing">&lt;test-data/&gt;</h2>
+      <p>
+        <strong>None yet.</strong> The load cell rig that produced the HD20's
+        report hasn't been run against this revision. When it has, the report
+        gets linked here.
+      </p>
+      <p>
+        If you build one and measure it before we do, please
+        <a href="https://github.com/scar8969/drive.magic/issues" target="_blank" rel="noopener">open an issue</a>
+        with your setup and your numbers. We'll credit you on this page.
+      </p>
+      <a class="cta ghost" href="hd20-torque-test.html" target="_blank">read the HD20 report instead &rarr;</a>
+
+      <h2 id="remix">&lt;make-your-own/&gt;</h2>
+      <p>
+        Two ways in, depending on how deep you want to go.
+      </p>
+      <p>
+        <strong>Change the tooth profile.</strong> This link opens our free
+        <a href="gearmaker.html">harmonic maker</a> loaded with the exact settings
+        used for the HDP30, so you can nudge one number and export a new DXF.
+      </p>
+      <a class="cta" href="gearmaker.html?style=pancake&amp;profile=cycloid&amp;tol=0.01&amp;wave=1&amp;fit=1&amp;module=0.55&amp;zf=60&amp;zc=62&amp;w0Ratio=1.0&amp;ha=1.08&amp;hd=1.08&amp;toothThickness=0.50&amp;toothAngle=9.17&amp;tipHalfWidth=0.30&amp;rootFillet=0.15&amp;clearance=0&amp;clearanceOutput=-0.05&amp;pressureAngle=30&amp;wallFlex=0.75&amp;wallCirc=3.0&amp;wallDyn=3.0">open the HDP30 profile in the harmonic maker &rarr;</a>
+      <p style="margin-top:2rem;">
+        <strong>Change the mechanics.</strong> The full parametric model is
+        public on Onshape. Copy it into your own workspace and change whatever
+        you like: a different motor face, a different output interface, a
+        different ratio. If you build a variant we would genuinely like to see
+        it: open an issue on the repo or tag
+        <a href="https://www.instagram.com/robrotics" target="_blank" rel="noopener">@robrotics</a>.
+      </p>
+      <a class="cta ghost" href="https://cad.onshape.com/documents/319971bd8bd86171560c48e0/w/245bded9ea0f5ce28da60641/e/576f328b49bb8904f021e3ae?renderMode=0&amp;uiState=6a9f1c9ef8a8e037959edf03" target="_blank" rel="noopener">open the model in onshape &rarr;</a>
+
+    </div>
+  </main>
+
+  <footer class="site">
+    &copy; 2026 drive.magic, open hardware for everyone
+  </footer>
+
+  <script src="js/bom.js"></script>
+</body>
+</html>

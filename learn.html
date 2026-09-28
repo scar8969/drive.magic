@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harmonic drives, plainly | drive.magic</title>
+  <meta name="description" content="A plain-language guide to harmonic (strain wave) drives: the three parts, module and tooth counts, deflection ratio, the wave generator, and how to use the drive.magic harmonic maker.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="180x180" href="/icon-180.png">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="drive.magic">
+  <meta property="og:title" content="Harmonic drives, plainly | drive.magic">
+  <meta property="og:description" content="A plain-language guide to harmonic (strain wave) drives and how to design one with the free harmonic maker.">
+  <meta property="og:url" content="https://scar8969.github.io/drive.magic/learn.html">
+  <meta property="og:image" content="https://scar8969.github.io/drive.magic/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <a class="wordmark" href="index.html">&lt;drive<span class="bro">.</span>magic/&gt;</a>
+    <nav>
+      <a href="actuators.html">&lt;actuators/&gt;</a>
+      <a href="gearmaker.html">&lt;harmonic-maker/&gt;</a>
+      <a href="learn.html" class="active">&lt;learn/&gt;</a>
+      <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">&lt;github/&gt;</a>
+    </nav>
+  </header>
+
+  <main class="prose">
+    <h1>Harmonic drives, plainly</h1>
+    <p class="lead">
+      A harmonic (strain wave) drive is a gearbox with huge reduction, near-zero
+      backlash, and very few parts. This page explains how it works and what each
+      number in the <a href="gearmaker.html">harmonic maker</a> actually controls.
+    </p>
+
+    <h2>&lt;the-three-parts/&gt;</h2>
+    <p>Every harmonic drive is three pieces:</p>
+    <ul>
+      <li><strong>Flexspline</strong>, a thin, flexible cup or ring with external
+        teeth. It bends.</li>
+      <li><strong>Circular spline</strong>, a rigid ring with internal teeth, with
+        <em>two more teeth</em> than the flexspline. It stays round.</li>
+      <li><strong>Wave generator</strong>, an oval cam (or roller assembly) inside
+        the flexspline that pushes it into an ellipse, so its teeth engage the
+        circular spline only at the two ends of the major axis.</li>
+    </ul>
+    <p>
+      As the wave generator spins, the engagement zone travels around the ring.
+      Because the flexspline has two fewer teeth, one full turn of the wave
+      generator walks the flexspline backward by just two teeth, and that tiny
+      slip per revolution is the huge reduction.
+    </p>
+
+    <h2>&lt;module-and-teeth/&gt;</h2>
+    <p>
+      <strong>Module</strong> (<code>m</code>, mm) is tooth size: pitch diameter ÷
+      tooth count. Bigger module, bigger and stronger teeth.
+      <strong>Zf</strong> and <strong>Zc</strong> are the flexspline and circular
+      spline tooth counts. The reduction ratio is:
+    </p>
+    <p><code>ratio = Zf / (Zc − Zf)</code></p>
+    <p>
+      With the usual two-tooth difference, a 100-tooth flexspline gives 50:1; a
+      32/34 pancake gives 16:1. Keep <code>Zc − Zf</code> even (almost always 2).
+    </p>
+
+    <h2>&lt;deflection-ratio/&gt;</h2>
+    <p>
+      The wave generator deflects the flexspline outward by a radial amount
+      <code>w₀</code> at the major axis. The <strong>deflection ratio</strong> is
+      <code>w₀ / m</code>. A ratio of <strong>1</strong> means the radius grows by
+      exactly one module, which is what you want, because the two-tooth
+      difference makes the flexspline and circular spline pitch radii differ by
+      exactly one module too. So the teeth mesh fully at the major axis and clear
+      fully at the minor axis.
+    </p>
+    <div class="note">
+      <strong>Rule of thumb:</strong> at ratio 1, the wave generator's major
+      diameter ≈ the flexspline bore + <code>2·m</code> (one module of push on
+      each side).
+    </div>
+
+    <h2>&lt;the-wave-generator/&gt;</h2>
+    <p>
+      The cam profile isn't a free-form oval. It follows a cosine deflection,
+      <code>r(φ) = R + w₀·cos(2φ)</code>, which is the shape a thin ring naturally
+      takes under a smooth two-lobe load. The harmonic maker generates this profile
+      for you: toggle <em>include wave generator</em> and it exports the solid cam
+      as its own DXF, sized to your bore and deflection.
+    </p>
+    <p>There's one hard limit. To stay convex (no cusp at the minor axis):</p>
+    <p><code>R &gt; 5·w₀</code></p>
+    <p>
+      where <code>R</code> is the flexspline's neutral radius. Real drives sit far
+      above this (<code>R/w₀ ≈ 40-100</code>); if you ever crowd the limit, the
+      flexspline buckles instead of bending smoothly. If a 34-mm-class cam is
+      awkward to source as a single bearing, build the wave generator from small
+      roller bearings on a carrier instead. The deflecting span is fixed by the
+      bore, but the bearings themselves can be tiny.
+    </p>
+
+    <h2>&lt;using-the-harmonic-maker/&gt;</h2>
+    <ul>
+      <li><strong>Cup vs pancake</strong>: cup is the classic two-part drive;
+        pancake (flat) adds a second, output circular spline.</li>
+      <li><strong>Tooth form</strong>: a fully-conjugate cycloid (CTP) or the
+        conventional S double-arc.</li>
+      <li><strong>Preset</strong> loads a known starting point: our own HDP30,
+        the 30:1 pancake drive on the actuators page.</li>
+      <li><strong>Reduction</strong> can be typed directly; the tooth counts
+        follow.</li>
+      <li><strong>Advanced mode</strong> exposes addendum, dedendum, tooth
+        thickness, clearance and the tooth or pressure angle if you want to tune
+        the mesh. It also has a switch that fits the tooth height to the wave
+        generator's deflection, which is the constraint most designs trip over
+        first.</li>
+      <li>The live readout shows ratio, deflection, teeth in mesh, backlash and
+        flexspline strain as you type.</li>
+      <li>Hit <strong>copy share link</strong> to put the whole design in the URL.
+        Paste it to anyone and they'll see the exact same gear.</li>
+      <li>Profiles export as 2D DXF; extrude them to your chosen wall depth in CAD
+        or a slicer.</li>
+    </ul>
+
+    <a class="cta" href="gearmaker.html">open the harmonic maker &rarr;</a>
+  </main>
+
+  <footer class="site">
+    &copy; 2026 drive.magic, open hardware for everyone
+  </footer>
+</body>
+</html>

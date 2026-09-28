@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HD20 (archived): 3D-printable 20:1 harmonic drive actuator | drive.magic</title>
+  <meta name="description" content="Archived: the HD20, a 3D-printable 20:1 strain wave (harmonic) actuator for any NEMA 17 stepper. Superseded by the HDP30, but still the only revision with load-cell data. Tested to 3.3 N·m.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="180x180" href="/icon-180.png">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="drive.magic">
+  <meta property="og:title" content="HD20 (archived): a printable 20:1 harmonic drive actuator">
+  <meta property="og:description" content="Superseded by the HDP30, kept online because it is still our only load-cell tested drive. 3.3 N·m, about $4 of hardware.">
+  <meta property="og:url" content="https://scar8969.github.io/drive.magic/hd20.html">
+  <link rel="canonical" href="https://scar8969.github.io/drive.magic/hd20.html">
+  <meta property="og:image" content="https://scar8969.github.io/drive.magic/img/hd20/hd20-exploded.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <a class="wordmark" href="index.html">&lt;drive<span class="bro">.</span>magic/&gt;</a>
+    <nav>
+      <a href="actuators.html" class="active">&lt;actuators/&gt;</a>
+      <a href="gearmaker.html">&lt;harmonic-maker/&gt;</a>
+      <a href="learn.html">&lt;learn/&gt;</a>
+      <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">&lt;github/&gt;</a>
+    </nav>
+  </header>
+
+  <main class="actuator">
+
+    <div class="archive-banner">
+      <p class="archive-banner-tag">&lt;archived/&gt;</p>
+      <p>
+        The HD20 has been superseded by the
+        <a href="hdp30.html">HDP30</a>, which gets 30:1 out of the same
+        motor face and the same bill of materials. Everything below still
+        works and the files are still up, so if you have already printed one,
+        nothing here has been taken away from you.
+      </p>
+      <p>
+        <strong>One honest caveat before you follow the new one:</strong> the
+        HD20 is still the only revision we have put on a load cell. The HDP30
+        has no torque, efficiency or backlash data yet. If you need a number
+        you can defend, build this one.
+      </p>
+    </div>
+
+    <section class="act-hero">
+      <div class="act-hero-copy">
+        <p class="eyebrow">&lt;archived/&gt; · v1.0 (RevA)</p>
+        <h1>HD20</h1>
+        <p class="lead">
+          A 3D-printable <strong>20:1</strong> harmonic drive that bolts onto
+          any standard NEMA&nbsp;17 stepper. The first drive we shipped, and
+          still the only one with a load-cell report behind it:
+          <strong>3.3 N·m</strong> peak, <strong>58%</strong> best efficiency.
+        </p>
+        <div class="act-cta-row">
+          <a class="cta" href="https://github.com/scar8969/drive.magic/releases" target="_blank" rel="noopener">download the files &rarr;</a>
+        </div>
+        <p class="act-license-line">
+          Free and open under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.
+        </p>
+      </div>
+      <figure class="act-hero-shot">
+        <img src="img/hd20/hd20-exploded.jpg"
+             srcset="img/hd20/hd20-exploded-800.jpg 600w, img/hd20/hd20-exploded.jpg 1200w"
+             sizes="(max-width: 900px) 100vw, 460px"
+             width="1200" height="1600"
+             alt="The HD20 actuator opened up, showing the ball-cage wave generator inside the printed body.">
+      </figure>
+    </section>
+
+    <section class="act-stats">
+      <div class="stat"><span class="stat-v">20:1</span><span class="stat-k">reduction</span></div>
+      <div class="stat"><span class="stat-v">3.3 N·m</span><span class="stat-k">measured peak torque</span></div>
+      <div class="stat"><span class="stat-v">58%</span><span class="stat-k">best efficiency</span></div>
+      <div class="stat"><span class="stat-v">~$3.96</span><span class="stat-k">hardware per unit</span></div>
+    </section>
+
+    <div class="act-body">
+
+      <h2 id="specs">&lt;specs/&gt;</h2>
+      <table class="spec-table">
+        <tbody>
+          <tr><th>Reduction</th><td>20:1</td></tr>
+          <tr><th>Tooth profile</th><td>Cycloidal, module 0.8, 40-tooth flexspline against a 42-tooth circular spline</td></tr>
+          <tr><th>Measured torque</th><td>2.32 N·m steady-state, 2.59 N·m peak (fresh, 0.7 A); up to 3.29 N·m steady-state at 1.4 A</td></tr>
+          <tr><th>Efficiency</th><td>58% best (super-tightened output spline, 0.7 A)</td></tr>
+          <tr><th>Motor</th><td>Any NEMA 17 with a 5 mm shaft</td></tr>
+          <tr><th>Lubrication</th><td>Super Lube synthetic PTFE grease</td></tr>
+          <tr><th>Printed parts</th><td>10 pieces across 9 unique parts</td></tr>
+          <tr><th>Fasteners</th><td>8 × M3×0.5 × 6 mm button head screws per drive</td></tr>
+          <tr><th>Materials</th><td>PLA throughout, PETG for the flexspline</td></tr>
+          <tr><th>Version</th><td>v1.0 (RevA), August 2026</td></tr>
+          <tr><th>License</th><td><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="testing">&lt;test-data/&gt;</h2>
+      <p>
+        The full load-cell report is still up, with the raw curves and the
+        honest unit-to-unit spread:
+      </p>
+      <a class="cta ghost" href="hd20-torque-test.html">read the HD20 torque report &rarr;</a>
+
+      <h2 id="files">&lt;the-files/&gt;</h2>
+      <p>
+        Everything lives in
+        <a href="https://github.com/scar8969/drive.magic" target="_blank" rel="noopener">scar8969/drive.magic</a>.
+        Grab the packaged bundles from the releases page.
+      </p>
+      <div class="dl-grid">
+        <a class="dl" href="https://github.com/scar8969/drive.magic/releases/latest" target="_blank" rel="noopener">
+          <span class="dl-k">STEP</span>
+          <span class="dl-d">Solid geometry, all nine parts. Slice it to print, or open it in CAD to remix.</span>
+        </a>
+        <a class="dl" href="https://github.com/scar8969/drive.magic/tree/main/cad/dxf" target="_blank" rel="noopener">
+          <span class="dl-k">DXF</span>
+          <span class="dl-d">The four tooth profiles, straight out of the harmonic maker.</span>
+        </a>
+      </div>
+
+      <h2 id="known">&lt;known-behaviour/&gt;</h2>
+      <ul>
+        <li><strong>PLA creeps under sustained load.</strong> Holding a heavy
+          static load for hours will slowly deform the circular splines.</li>
+        <li><strong>Unit-to-unit variation is real.</strong> Two HD20s of the
+          same design differed by up to 18% at the same current.</li>
+        <li><strong>Output spline preload is the biggest tuning knob.</strong>
+          Tightening it further took one unit from 2.37 to 2.55 N·m.</li>
+        <li><strong>Torque drops after running in.</strong> One HD20 measured
+          2.32 N·m fresh and 2.08 N·m after further running. Plan around the
+          run-in figure, not the fresh one.</li>
+      </ul>
+
+      <h2 id="remix">&lt;make-your-own/&gt;</h2>
+      <p>
+        The HD20's tooth profile is in the harmonic maker too. Open it, nudge a
+        number, and export a new DXF:
+      </p>
+      <a class="cta" href="gearmaker.html?style=cup&amp;profile=cycloid&amp;tol=0.01&amp;wave=1&amp;fit=1&amp;module=0.8&amp;zf=40&amp;zc=42&amp;w0Ratio=1.0&amp;ha=1.0&amp;hd=1.0&amp;toothThickness=0.50&amp;toothAngle=9.17&amp;tipHalfWidth=0.30&amp;rootFillet=0.15&amp;clearance=0.05&amp;pressureAngle=30&amp;wallFlex=0.75&amp;wallCirc=3.0">open the HD20 profile in the harmonic maker &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="site">
+    &copy; 2026 drive.magic, open hardware for everyone
+  </footer>
+</body>
+</html>
