@@ -3,6 +3,9 @@
 Open-hardware harmonic (strain wave) drive actuators, and the tools to design
 them. Printable gearboxes with real measured data — no gatekeeping.
 
+![HDP30 pancake harmonic drive, assembled](img/hdp30/hdp30-assembled-800.jpg)
+![HD20 exploded view](img/hd20/hd20-exploded-800.jpg)
+
 ## Pages
 
 - `index.html` — landing (actuators · harmonic maker · measured)
